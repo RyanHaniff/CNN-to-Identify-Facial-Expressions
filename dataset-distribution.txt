@@ -1,0 +1,22 @@
+Train/Val/Test
+Val = around 20%
+Anger:
+390/90/195
+
+Contempt:
+150/45/75
+
+Disguts:
+495/120/270
+
+Fear:
+210/60/105
+
+Happy:
+570/150/315
+
+Sadness:
+240/60/120
+
+Surprise:
+705/180/360

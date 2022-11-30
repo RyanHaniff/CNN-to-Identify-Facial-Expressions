@@ -5,21 +5,7 @@ import cv2
 # TODO
 """Crop the image to the edge of the eye location"""
 
-
-def main():
-    # data_dir = '../COMP_473_Project/CK+'
-    # new_dir = '../COMP_473_Project/CK_formatted'
-    #
-    # for image_class in os.listdir(data_dir):
-    #     print(image_class +"-----------------------")
-    #     for image in os.listdir(os.path.join(data_dir, image_class)):
-    #         image_path = os.path.join(data_dir, image_class, image)
-    #         # print(image_path)
-    #
-    #         name = re.findall(r'(?<=\/)S[0-9]+', image_path)
-    #
-    #         print(name[0])
-
+def image_preprocessing():
     data_dir = '../COMP_473_Project/CK+'
     aug_data_dir = '../COMP_473_Project/CK_Augmented'
 
@@ -29,6 +15,7 @@ def main():
     cw, ch = 248, 248
     half_size = 248 // 2
     cx, cy = 0, 0
+    img_dim = (64, 64)
     for image_class in os.listdir(data_dir):
         # print(image_class)
         for image in os.listdir(os.path.join(data_dir, image_class)):
@@ -57,7 +44,28 @@ def main():
                 # crop_img = image[y:cy + ch, x:cx + cw]
                 crop_img = image[y:y + h, x:x + w]
 
-            cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), crop_img)
+            # Resizing the image down to 64 x 64 pixels
+            resized = cv2.resize(crop_img, img_dim, interpolation=cv2.INTER_AREA)
+
+            cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), resized)
+
+
+def main():
+    # data_dir = '../COMP_473_Project/CK+'
+    # new_dir = '../COMP_473_Project/CK_formatted'
+    #
+    # for image_class in os.listdir(data_dir):
+    #     print(image_class +"-----------------------")
+    #     for image in os.listdir(os.path.join(data_dir, image_class)):
+    #         image_path = os.path.join(data_dir, image_class, image)
+    #         # print(image_path)
+    #
+    #         name = re.findall(r'(?<=\/)S[0-9]+', image_path)
+    #
+    #         print(name[0])
+
+    image_preprocessing()
+
 
 
 """

@@ -161,12 +161,13 @@ def data_augmentation():
 
                 cv2.imwrite(os.path.join(aug_data_dir, image_class, newName), img)
 
+
 def get_image_name_re():
     data_dir = '../COMP_473_Project/CK+'
     new_dir = '../COMP_473_Project/CK_formatted'
 
     for image_class in os.listdir(data_dir):
-        print(image_class +"-----------------------")
+        print(image_class + "-----------------------")
         for image in os.listdir(os.path.join(data_dir, image_class)):
             image_path = os.path.join(data_dir, image_class, image)
             # print(image_path)
@@ -174,6 +175,7 @@ def get_image_name_re():
             name = re.findall(r'(?<=\/)S[0-9]+', image_path)
 
             print(name[0])
+
 
 def rgb_Equalization():
     """
@@ -187,31 +189,31 @@ def rgb_Equalization():
 
     for image_class in os.listdir(data_dir):
         for image in os.listdir(os.path.join(data_dir, image_class)):
-            
-            image_name = image
 
+            image_name = image
+            print(image_name)
             image_path = os.path.join(data_dir, image_class, image)
 
             img = cv2.imread(image_path)  # cv2.IMREAD_UNCHANGED
-            
-            #split R, G, B values of the image
+
+            # split R, G, B values of the image
             R, G, B = cv2.split(img)
-            #apply equalization on each color
+            # apply equalization on each color
             output1_R = cv2.equalizeHist(R)
             output1_G = cv2.equalizeHist(G)
             output1_B = cv2.equalizeHist(B)
 
-            #merge back the color histogram after equalization to get back the image in RGB
+            # merge back the color histogram after equalization to get back the image in RGB
             equ_img = cv2.merge((output1_R, output1_G, output1_B))
-        
-            #check if there is a directory for the emotion category, if not create one
+
+            # check if there is a directory for the emotion category, if not create one
             if not os.path.isdir(os.path.join(aug_data_dir, image_class)):
                 os.mkdir(os.path.join(aug_data_dir, image_class))
-                
-            cv2.imwrite(os.path.join(aug_data_dir, image_class , image_name), equ_img)
+
+            cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), equ_img)
+
 
 def main():
-
     # eye_preprocessiong()
     # data_augmentation()
     rgb_Equalization()

@@ -209,11 +209,12 @@ def rgb_Equalization():
                 os.mkdir(os.path.join(aug_data_dir, image_class))
                 
             cv2.imwrite(os.path.join(aug_data_dir, image_class , image_name), equ_img)
-            
+
 def main():
 
-    eye_preprocessiong()
+    # eye_preprocessiong()
     # data_augmentation()
+    rgb_Equalization()
 
 
 """

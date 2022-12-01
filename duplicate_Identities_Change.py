@@ -1,6 +1,8 @@
 import os
 import re
 import cv2
+import imutils
+import math
 
 # TODO
 """Crop the image to the edge of the eye location"""
@@ -98,6 +100,63 @@ def eye_preprocessiong():
 
             # cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), crop_img)
 
+
+
+
+def data_augmentation():
+    """
+        Tilt original image file into 4 different angles to create additional input image
+    """
+    data_dir = '../COMP_473_Project/CK+'
+    aug_data_dir = '../COMP_473_Project/CK_Augmented'
+
+    if not os.path.isdir(aug_data_dir):
+        os.mkdir(aug_data_dir)
+
+    for image_class in os.listdir(data_dir):
+        for image in os.listdir(os.path.join(data_dir, image_class)):
+            
+            image_name = image
+
+            image_path = os.path.join(data_dir, image_class, image)
+
+            img = cv2.imread(image_path)  # cv2.IMREAD_UNCHANGED
+            
+            #create 4 new files after rotation
+            result = []
+            rot_angle = [-10, -5, 0, 5, 10]
+            for a in rot_angle:
+                imgr = imutils.rotate(img, angle=a)
+                result += [imgr]
+            
+
+            count = 0
+            for j in range(len(result)):
+                img = result[j]
+                i = math.floor(j/5)
+                x = image_name.split(".")
+                k = (j-(i*5))
+                #rotation angle -10
+                if k == 0:
+                    newName = x[0] + 'r1'+'.png'
+                #rotation angle -5
+                elif k == 1:
+                    newName = x[0] + 'r2'+'.png'
+                #rotation angle 0 : original image
+                elif k == 2:
+                    newName = x[0] + 'r3'+'.png'
+                #rotation angle 5
+                elif k == 3:
+                    newName = x[0] + 'r4'+'.png'
+                #rotation angle 10
+                elif k == 4:
+                    newName = x[0] + 'r5'+'.png'
+                
+                #check if there is a directory for the emotion category, if not create one
+                if not os.path.isdir(os.path.join(aug_data_dir, image_class)):
+                    os.mkdir(os.path.join(aug_data_dir, image_class))
+                
+                cv2.imwrite(os.path.join(aug_data_dir, image_class , newName), img)
 
 def main():
     # data_dir = '../COMP_473_Project/CK+'

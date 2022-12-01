@@ -5,6 +5,7 @@ import cv2
 # TODO
 """Crop the image to the edge of the eye location"""
 
+
 def image_preprocessing():
     data_dir = '../COMP_473_Project/CK+'
     aug_data_dir = '../COMP_473_Project/CK_Augmented'
@@ -50,6 +51,54 @@ def image_preprocessing():
             cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), resized)
 
 
+def eye_preprocessiong():
+    data_dir = '../COMP_473_Project/CK+'
+    aug_data_dir = '../COMP_473_Project/CK_Augmented_ImageCrop'
+
+    if not os.path.isdir(aug_data_dir):
+        os.mkdir(aug_data_dir)
+
+    for image_class in os.listdir(data_dir):
+        for image in os.listdir(os.path.join(data_dir, image_class)):
+            image_name = image
+            print(image_name)
+
+            image_path = os.path.join(data_dir, image_class, image)
+
+            image = cv2.imread(image_path)  # cv2.IMREAD_UNCHANGED
+
+            # The classifiers we use to find the face and eyes
+            face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+            eye_cascade = cv2.CascadeClassifier('haarcascade_eye_tree_eyeglasses.xml')
+
+            eyes = eye_cascade.detectMultiScale(image, scaleFactor=100, minNeighbors=10)
+            faces = face_cascade.detectMultiScale(image, 1.3, 5)
+
+            global crop_img
+            x, y, w, h = 0, 0, 0, 0
+            for (x, y, w, h) in faces:
+                # To draw a rectangle in a face
+                # cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 0), 2)
+                # crop_img = image[y:y + h, x:x + w]
+                x, y, w, h = x, y, w, h
+
+            ex, ey, ew, eh = 0, 0, 0, 0
+            for (ex, ey, ew, eh) in eyes:
+                # To draw a rectangle in a face
+                # cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 0), 2)
+                # crop_img = image[ey:ey + eh, ex:ex + ew]
+                ex, ey, ew, eh = ex, ey, ew, eh
+
+            crop_img = image[y:y + h, x:x + w]
+
+            # CK_Augmented_ImageCrop_Class_dir = os.path.join(aug_data_dir, image_class)
+
+            if not os.path.isdir(os.path.join(aug_data_dir, image_class)):
+                os.mkdir(os.path.join(aug_data_dir, image_class))
+
+            # cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), crop_img)
+
+
 def main():
     # data_dir = '../COMP_473_Project/CK+'
     # new_dir = '../COMP_473_Project/CK_formatted'
@@ -64,8 +113,7 @@ def main():
     #
     #         print(name[0])
 
-    image_preprocessing()
-
+    eye_preprocessiong()
 
 
 """

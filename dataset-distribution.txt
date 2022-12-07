@@ -20,3 +20,67 @@ Sadness:
 
 Surprise:
 705/180/360
+
+
+
+FER-2013 - Original
+Angry:
+3169 Train
+792 Val
+992 Test
+
+Disgust:
+350 Train
+87 Val
+110 Test
+
+Fear:
+3277 Train
+819 Val
+1025 Test
+
+Happy:
+5752 Train
+819 Val
+1799 Test
+
+Sad:
+3889 Train
+972 Val
+1216 Test
+
+Surprise:
+2561 Train
+640 Val
+801 Test
+
+FER-2013 - Augmented
+Angry:
+38028 Train
+9504 Val
+11904 Test
+
+Disgust:
+4200 Train
+1044 Val
+1320Test
+
+Fear:
+39324 Train
+9828 Val
+12300 Test
+
+Happy:
+69024 Train
+9828 Val
+21588 Test
+
+Sad:
+46668 Train
+11664 Val
+14592 Test
+
+Surprise:
+30732 Train
+7680 Val
+9612 Test

@@ -4,10 +4,6 @@ import cv2
 import imutils
 import math
 
-# TODO
-"""Crop the image to the edge of the eye location"""
-
-
 def image_preprocessing():
     data_dir = '../COMP_473_Project/CK+'
     aug_data_dir = '../COMP_473_Project/CK_Augmented'
@@ -54,10 +50,11 @@ def image_preprocessing():
 
 
 def eye_preprocessiong():
+    count = 1
     # The directory we want to do pre processing on:
-    data_dir = '../COMP_473_Project/CK_Augmented'
+    data_dir = '../COMP_473_Project/FER_2013_Original'
     # The directory where we save the new pre processing images:
-    aug_data_dir = '../COMP_473_Project/CK_Augmented_ImageCrop'
+    aug_data_dir = '../COMP_473_Project/FER_2013_Cropping'
 
     if not os.path.isdir(aug_data_dir):
         os.mkdir(aug_data_dir)
@@ -78,8 +75,8 @@ def eye_preprocessiong():
             eye_cascade = cv2.CascadeClassifier('haarcascade_eye_tree_eyeglasses.xml')
 
             faces = face_cascade.detectMultiScale(image, 1.3, 5)
-            eyes = eye_cascade.detectMultiScale(image, scaleFactor=100, minNeighbors=10)
-
+            # eyes = eye_cascade.detectMultiScale(image, scaleFactor=100, minNeighbors=10)
+            original_image = image
             crop_img = image
             # x, y, w, h = 0, 0, 0, 0
             for (x, y, w, h) in faces:
@@ -88,6 +85,7 @@ def eye_preprocessiong():
                 # crop_img = image[y:y + h, x:x + w]
                 x, y, w, h = x, y, w, h
                 crop_img = image[y:y + h, x + constant_to_scale:x + w - constant_to_scale]
+
 
             # ex, ey, ew, eh = 0, 0, 0, 0
             # if eyes:
@@ -104,7 +102,16 @@ def eye_preprocessiong():
             if not os.path.isdir(os.path.join(aug_data_dir, image_class)):
                 os.mkdir(os.path.join(aug_data_dir, image_class))
 
-            cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), crop_img)
+            # image = cv2.imread(crop_img)
+
+            # Checking if the image is empty or not
+            print(count)
+            count += 1
+            try:
+                cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), crop_img)
+            except:
+                cv2.imwrite(os.path.join(aug_data_dir, image_class, image_name), original_image)
+                continue
 
 
 def data_augmentation():
@@ -214,9 +221,9 @@ def rgb_Equalization():
 
 
 def main():
-    # eye_preprocessiong()
+    eye_preprocessiong()
     # data_augmentation()
-    rgb_Equalization()
+    # rgb_Equalization()
 
 
 """

@@ -4,7 +4,7 @@
      Locate the download and reaplce any comments that say "YOUR DIRECTORY PATH HERE" with the location of the CK+ dataset
      
      
-### 1. Preprocessing the dataset to be augemented (rotated, cropping, intensity normalization) go to DataPreparation.ipyn
+### 1. Preprocessing the dataset to be augemented (rotated, cropping, intensity normalization) go to DataPreparation.ipyn notebook
      - Each augemented dataset should have three shuffled datasets: Dataset1, Dataset2 and Dataset3
      - Within each Dataset it will contain train and val directories
      - The testing dataset will be standalone directories to run for cross-validation: Text1, Test2, Test3
@@ -62,4 +62,10 @@
   <li>Finally, we need to make the data set for intensity normalization to increase the contrast of the image</li>
 </ol>
 
-### 2. Now we use our augemented datasets to run 
+### 2. Now we use our augemented datasets to run the tensorflow models. Go to the Experiments_And_Restults.ipynb notebook
+<ul>
+  <li>This notebook is automated to run from the start once you have all the file paths located for each pre-processing method directory </li>
+  <li>Once all the filepaths are entered, run the first code block to import any missing libraries</li>
+  <li>Three models per pre-processing method will be saved as .h5 for future testing. The testing of each model with its respective test directory will also be done on its own. </li>
+  <li>Fourth item</li>
+</ul>

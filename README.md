@@ -9,28 +9,28 @@
      - Within each Dataset it will contain train and val directories
      - The testing dataset will be standalone directories to run for cross-validation: Text1, Test2, Test3
      The output will look something like this when using split-folders library:
-Project Directory/
-    train/
-        happy/
-            img1.jpg
-            ...
-        sad/
-            imga.jpg
-            ...
-    val/
-        happy/
-            img2.jpg
-            ...
-        sad/
-            imgb.jpg
-            ...
-    Test/
-        happy/
-            img2.jpg
-            ...
-        sad/
-            imgb.jpg
-            ...
+     Project Directory/
+         train/
+             happy/
+                 img1.jpg
+                 ...
+             sad/
+                 imga.jpg
+                 ...
+         val/
+             happy/
+                 img2.jpg
+                 ...
+             sad/
+                 imgb.jpg
+                 ...
+         Test/
+             happy/
+                 img2.jpg
+                 ...
+             sad/
+                 imgb.jpg
+                 ...
         
  <ol>
     <li>You have to run each facial expression directory individually to rotate all the images inside between -10.5 degrees and 10.5 degrees</li>

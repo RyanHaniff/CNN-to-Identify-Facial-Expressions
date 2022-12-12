@@ -2,7 +2,8 @@
 
 #### Download the CK+ Dataset here: https://www.kaggle.com/datasets/shareef0612/ckdataset
      Locate the download and reaplce any comments that say "YOUR DIRECTORY PATH HERE" with the location of the CK+ dataset
-     
+
+#### Import all necessary libraries as specified in each .ipynb files
      
 ### 1. Preprocessing the dataset to be augemented (rotated, cropping, intensity normalization) go to DataPreparation.ipyn notebook
      - Each augemented dataset should have three shuffled datasets: Dataset1, Dataset2 and Dataset3

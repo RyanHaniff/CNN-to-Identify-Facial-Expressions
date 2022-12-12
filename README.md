@@ -5,9 +5,9 @@
      
      
 ### 1. Preprocessing the dataset to be augemented (rotated, cropping, intensity normalization) go to DataPreparation.ipyn
-#### \t Each augemented dataset should have three shuffled datasets: Dataset1, Dataset2 and Dataset3
-#### \t Within each Dataset it will contain train and val directories
-#### \t The testing dataset will be standalone directories to run for cross-validation: Text1, Test2, Test3
+####           Each augemented dataset should have three shuffled datasets: Dataset1, Dataset2 and Dataset3
+####           Within each Dataset it will contain train and val directories
+####           The testing dataset will be standalone directories to run for cross-validation: Text1, Test2, Test3
  <ol>
     <li>You have to run each facial expression directory individually to rotate all the images inside between -10.5 degrees and 10.5 degrees</li>
   <li>To make sure the training set doesnt contain any subject from the testing set run the create_dataset_without_duplicate_subject() function</li>

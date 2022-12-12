@@ -9,7 +9,7 @@
      - Within each Dataset it will contain train and val directories
      - The testing dataset will be standalone directories to run for cross-validation: Text1, Test2, Test3
      The output will look something like this when using split-folders library:
-     output/
+Project Directory/
     train/
         happy/
             img1.jpg

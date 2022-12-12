@@ -10,21 +10,44 @@
      - The testing dataset will be standalone directories to run for cross-validation: Text1, Test2, Test3
      The output will look something like this when using split-folders library:
      Project Directory/
-         train/
-             happy/
-                 img1.jpg
-                 ...
-             sad/
-                 imga.jpg
-                 ...
-         val/
+          Dataset1/
+              train/
+                  happy/
+                      img1.jpg
+                      ...
+                  sad/
+                      imga.jpg
+                      ...
+              val/
+                  happy/
+                      img2.jpg
+                      ...
+                  sad/
+                      imgb.jpg
+                      ...
+           Dataset2/
+              train/
+                  happy/
+                      img1.jpg
+                      ...
+                  sad/
+                      imga.jpg
+                      ...
+              val/
+                  happy/
+                      img2.jpg
+                      ...
+                  sad/
+                      imgb.jpg
+                      ...
+         Test1/
              happy/
                  img2.jpg
                  ...
              sad/
                  imgb.jpg
                  ...
-         Test/
+         Test2/
              happy/
                  img2.jpg
                  ...

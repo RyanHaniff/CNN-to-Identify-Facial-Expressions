@@ -67,5 +67,4 @@
   <li>This notebook is automated to run from the start once you have all the file paths located for each pre-processing method directory </li>
   <li>Once all the filepaths are entered, run the first code block to import any missing libraries</li>
   <li>Three models per pre-processing method will be saved as .h5 for future testing. The testing of each model with its respective test directory will also be done on its own. </li>
-  <li>Fourth item</li>
 </ul>
